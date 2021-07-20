@@ -1,0 +1,30 @@
+body {
+    text-align: center;
+}
+
+h1 {
+    margin-top: 10vh;
+}
+
+.container {
+    background: black;
+    display: inline-block;
+    border: 5px solid black;
+  }
+  
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 80px);
+    grid-template-rows: repeat(3, 80px);
+    grid-gap: 5px;
+}
+  
+.cell {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-family: Arial;
+    font-size: 3rem;
+    font-weight: bold;
+    background: white;
+}

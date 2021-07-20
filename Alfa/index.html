@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Tic-tac-toe</title>
+</head>
+<body>
+    <h1>Tic-tac-toe</h1>
+    <h2 id="showTurn">Turn: Player</h2>
+    <div class="container">
+        <div class="grid">
+            <div class="cell" id="0" onclick="funClick(0)"></div>
+            <div class="cell" id="1" onclick="funClick(1)"></div>
+            <div class="cell" id="2" onclick="funClick(2)"></div>
+            <div class="cell" id="3" onclick="funClick(3)"></div>
+            <div class="cell" id="4" onclick="funClick(4)"></div>
+            <div class="cell" id="5" onclick="funClick(5)"></div>
+            <div class="cell" id="6" onclick="funClick(6)"></div>
+            <div class="cell" id="7" onclick="funClick(7)"></div>
+            <div class="cell" id="8" onclick="funClick(8)"></div>
+        </div>
+    </div>
+
+    <script>
+        var Mem = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',]
+        var Turn = 'Player';
+        
+        async function ComputerTurn() {
+            if (Turn == 'Computer') {
+                let randomNum = Math.floor(Math.random() * 9);
+
+                if (Mem[randomNum] == ' ') {
+                    await sleep(2000);
+                    Mem[randomNum] = 'O'
+                    Turn = 'Player';
+                    reload();
+                }
+                else {
+                    ComputerTurn();
+                }
+            }
+        }
+
+        function funClick(NumberID) {
+            if (Turn == 'Player') {
+                if (Mem[NumberID] == ' ') {
+                    Mem[NumberID] = 'X';
+                    Turn = 'Computer';
+                    reload();
+                }
+            }
+            ComputerTurn();
+        }
+    
+        function reload() {
+            document.getElementById("showTurn").innerHTML = 'Turn: ' + Turn;
+
+            document.getElementById("0").innerHTML = Mem[0];
+            document.getElementById("1").innerHTML = Mem[1];
+            document.getElementById("2").innerHTML = Mem[2];
+            document.getElementById("3").innerHTML = Mem[3];
+            document.getElementById("4").innerHTML = Mem[4];
+            document.getElementById("5").innerHTML = Mem[5];
+            document.getElementById("6").innerHTML = Mem[6];
+            document.getElementById("7").innerHTML = Mem[7];
+            document.getElementById("8").innerHTML = Mem[8];
+        }
+
+        function sleep(ms) {
+            return new Promise(
+                resolve => setTimeout(resolve, ms)
+            );
+        }
+    </script>
+</body>
+</html>
